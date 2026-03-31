@@ -2,5 +2,30 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "tutorialmod:item/clear_sprite"
+  },
+  "overrides": [
+    {"predicate": {"vaping": 1}, "model": "minecraft:item/diamond"}
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [0, 90, 0],
+      "translation": [-0.25, 1.75, 1],
+      "scale": [0.4, 0.4, 0.4]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0, 90, 0],
+      "translation": [-0.25, 1.75, 1],
+      "scale": [0.4, 0.4, 0.4]
+    },
+    "firstperson_righthand": {
+      "rotation": [-3, -78, 15],
+      "translation": [-0.75, 3.25, 2.5],
+      "scale": [0.4, 0.4, 0.4]
+    },
+    "firstperson_lefthand": {
+      "rotation": [3, -78, 15],
+      "translation": [-0.75, 3.25, 2.5],
+      "scale": [0.4, 0.4, 0.4]
+    }
   }
 }

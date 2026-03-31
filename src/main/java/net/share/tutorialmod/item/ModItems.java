@@ -6,16 +6,18 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.share.tutorialmod.TutorialMod;
+import net.share.tutorialmod.item.custom.ModVapeProperties;
+import net.share.tutorialmod.item.custom.VapeItem;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, TutorialMod.MOD_ID);
 
     public static final RegistryObject<Item> COOLMINT_FLUM = ITEMS.register("coolmint_flum",
-            () -> new Item(new Item.Properties().food(ModVapeProperties.VAPE)));
+            () -> new VapeItem(new Item.Properties()));
 
     public static final RegistryObject<Item> CLEAR_FLUM = ITEMS.register("clear_flum",
-            () -> new Item(new Item.Properties().food(ModVapeProperties.VAPE)));
+            () -> new VapeItem(new Item.Properties()));
 
     public static final RegistryObject<Item> BLUERAZZICE_FLUM = ITEMS.register("bluerazzice_flum",
             () -> new Item(new Item.Properties().food(ModVapeProperties.VAPE)));

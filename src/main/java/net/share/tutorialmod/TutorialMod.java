@@ -17,6 +17,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.share.tutorialmod.item.ModCreativeModeTabs;
 import net.share.tutorialmod.item.ModItems;
 import org.slf4j.Logger;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+
 
 // TEST COMMENT
 // The value here should match an entry in the META-INF/mods.toml file
@@ -55,6 +58,7 @@ public class TutorialMod
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.COOLMINT_FLUM);
             event.accept(ModItems.CLEAR_FLUM);
+            event.accept(ModItems.BLUERAZZICE_FLUM);
         }
     }
 
@@ -70,7 +74,32 @@ public class TutorialMod
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
 
+                ItemProperties.register(
+                        ModItems.BLUERAZZICE_FLUM.get(),
+                        ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "vaping"),
+                        (stack, level, entity, seed) ->
+                                entity != null && entity.getUseItem() == stack ? 1.0F : 0.0F
+                );
+
+                ItemProperties.register(
+                        ModItems.CLEAR_FLUM.get(),
+                        ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "vaping"),
+                        (stack, level, entity, seed) ->
+                                entity != null && entity.isUsingItem() && entity.getUseItem().getItem() == stack.getItem()
+                                        ? 1.0F : 0.0F
+                );
+
+                ItemProperties.register(
+                        ModItems.COOLMINT_FLUM.get(),
+                        ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "vaping"),
+                        (stack, level, entity, seed) ->
+                                entity != null && entity.isUsingItem() && entity.getUseItem().getItem() == stack.getItem()
+                                        ? 1.0F : 0.0F
+                );
+
+            });
         }
     }
 }
