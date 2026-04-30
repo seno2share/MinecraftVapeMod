@@ -1,5 +1,6 @@
 package net.share.tutorialmod.item.custom;
 
+import com.mojang.math.Axis;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -64,8 +65,18 @@ public class VapeItem extends Item {
                 if (player.getUseItem() != itemInHand) {
                     return true;
                 }
-                if (player.isUsingItem()) {
-                    poseStack.translate(0.0, -0.05, 0.0);
+                if (arm == HumanoidArm.LEFT) {
+                    if (player.isUsingItem()) {
+                        poseStack.translate(0.5, -0.05, 0.1);
+                        poseStack.mulPose(Axis.YP.rotationDegrees(-54.0f));
+                        poseStack.mulPose(Axis.ZP.rotationDegrees(-10.0f));
+                    }
+                } else {
+                    if (player.isUsingItem()) {
+                        poseStack.translate(-0.5, -0.05, 0.1);
+                        poseStack.mulPose(Axis.YP.rotationDegrees(40.0f));
+                        poseStack.mulPose(Axis.ZP.rotationDegrees(10.0f));
+                    }
                 }
                 return true;
             }
